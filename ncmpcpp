@@ -1,0 +1,63 @@
+# Configuracion basica
+ncmpcpp_directory = 	"~/.ncmpcpp"
+mpd_music_dir = 	"/home/virus69/Música" 
+mpd_host = 		"localhost"
+mpd_port =		"6600"
+mpd_connection_timeout = 5
+
+# Interfaz:
+user_interface = "alternative"
+alternative_header_first_line_format = 		"$(10)─┤ $b$(10)%a$(end)$/b ├─$(end)"
+alternative_header_second_line_format =		"$(10)%t (%y)$(end)"
+alternative_ui_separator_color = 		"red"
+
+# Formato de canción:
+song_columns_list_format = 			"$L(20)[red]{l} (20)[red]{a} (20)[red]{b}$R(20)[red]{t}"
+
+# Varias configuraciones:
+autocenter_mode = 	"yes"
+display_bitrate = 	"yes"
+header_visibility = 	"yes"
+statusbar_visibility = 	"yes"
+progressbar_look = 	"◾◾◽"
+
+
+# Visualizador de música:
+visualizer_output_name = 	"FIFO"
+visualizer_in_stereo = 		"no"
+visualizer_fifo_path = 		"/tmp/mpd.fifo"
+visualizer_sync_interval = 	"10"
+visualizer_type = 		"spectrum"
+visualizer_look = 		"▋▋"
+
+# Color:
+discard_colors_if_item_is_selected = 	"yes"
+main_window_color = 			"10"
+header_window_color = 			"10"
+progressbar_color = 			"10"
+statusbar_color = 			"red"
+active_column_color = 			"red"
+volume_color = 				"10"
+window_border_color = 			"red"
+active_window_border = 			"red"
+
+# No activos
+#song_list_format = 			"{$4%n▕ $9}{$4%a - $9}{$4%t$9}|{$5%f$9}$R{$5▕ %b$9}{$8▕ %l$9}"
+#colors_enabled = 			"yes"
+#color1 = 				"red"
+#color2 = 				"red"
+#empty_tag_color = 			"white"
+#main_window_highlight_color = 		"white"
+#state_line_color = 			"red"
+#state_flags_color = 			"red"
+visualizer_color = 			"10"
+
+#progressbar_look = "─░─"
+#progressbar_look = "─⊙╶"
+#progressbar_look = "◾◾◽"
+#visualizer_look  = "▋▋"
+
+    Contact GitHub API Training Shop Blog About 
+
+    © 2016 GitHub, Inc. Terms Privacy Security Status Help 
+

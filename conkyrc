@@ -1,0 +1,83 @@
+background yes
+use_xft yes
+xftfont Arial:size=12
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_argb_visual yes
+own_window_type normal
+own_window_hints undecorated,below,skip_taskbar,skip_pager,sticky
+double_buffer yes
+minimum_size 500 500
+maximum_width 300
+text_buffer_size 2400
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+default_color white
+default_outline_color white
+alignment top_left
+gap_x 980
+gap_y 10
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale yes
+#
+color1 white
+#
+color2 red
+#
+color3 white
+#
+color4 green
+#cornflowerblue
+# Lua Load #
+#lua_load ~/.conky/ring.lua
+#lua_draw_hook_pre clock_rings
+
+TEXT
+${font Sans:size=8}${color3}Operating system : ${goto 120}${color2}${exec lsb_release -d | cut -f2 }
+
+${color3}Kernel: ${color2}${exec expr `uname -r`} ${goto 160}${color3}Arch: ${color2}$machine
+${color3}Uptime:${color2} $uptime ${goto 160}${color3}Load:${color2} $loadavg
+${color3}Processes: ${color2} $processes${color3}${goto 160}Running Process: ${color2} $running_processes
+
+${color3}Battery: ${color2} ${exec acpi -b | awk '{ print "State : " $3 " Capacity : "$4 " (" $5 ")"}'}
+
+${color3}CPU : ${hr}${color2}
+
+${color3}Clock frequency :${color2} ${freq_g} GHz
+
+${color3}Core 1:${color2} ${cpu cpu0}%${goto 85}${color4}${cpubar cpu0 6,60}${color2}${goto 170}${exec expr `sensors | grep 'Core 0' | cut -d+ -f2 | cut -d\( -f1 | cut -d. -f1`}°C${goto 200}${color4}${execbar expr `sensors | grep 'Core 0' | cut -d+ -f2 | cut -d\( -f1 | cut -d. -f1`}${color2}
+${color3}Core 2:${color2} ${cpu cpu1}%${goto 85}${color4}${cpubar cpu1 6,60}${color2}${goto 170}${exec expr `sensors | grep 'Core 1' | cut -d+ -f2 | cut -d\( -f1 | cut -d. -f1`}°C${goto 200}${color4}${execbar expr `sensors | grep 'Core 1' | cut -d+ -f2 | cut -d\( -f1 | cut -d. -f1`}${color2}
+
+${color3}MEMORY : ${hr}${color2}
+
+${color3}RAM:${goto 40}${color2} $mem / $memmax ${goto 170}$memperc% ${goto 200}${color4}${membar}${color2}
+${color3}SWAP:${goto 40}${color2} ${swap} / ${swapmax} ${goto 170} ${swapperc}%${goto 200}${color4}${swapbar}
+
+${color3}STORAGE :${hr}${color2}
+
+${color3}Root ${color2}${goto 50}${fs_used /} / ${fs_size /} ${goto 170}${fs_used_perc /}% ${goto 200}${color4}${fs_bar /}${color2}
+${color3}Home ${color2}${goto 50}${fs_used /home} / ${fs_size /home} ${goto 170}${fs_used_perc /home}% ${goto 200}${color4}${fs_bar /home}${color2}
+${color3}DATA ${color2}${goto 50}${fs_used /media/DATA} / ${fs_size /media/DATA} ${goto 170}${fs_used_perc /media/DATA}% ${goto 200}${color4}${fs_bar /media/DATA}${color2}
+
+#${color3}Temp DATA :${color2}${texeci 60 hddtemp /dev/sdb | cut -d : -f 3}
+#
+${color3}NETWORK : ${hr}${color2}
+
+${color3}Wired : ${color2}${addr enp4s0}
+${color3}Download :${color2} ${downspeedf enp4s0}k/s ${goto 175} ${color3}Upload :${color2} ${upspeedf enp4s0}k/s
+
+${color3}Wireless : ${color2}${addr wlp3s0}
+${color3}Download :${color2} ${downspeedf wlp3s0}k/s ${goto 175} ${color3}Upload :${color2} ${upspeedf wlp3s0}k/s
+
+${color3}Public IP : ${color2}${texeci 1000 wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1} ${goto 175} ${color3}Latence : ${color2}${texeci 1 ping 8.8.8.8 -c 1 | grep time= | cut -d"=" -f4}
+
+
+
+
